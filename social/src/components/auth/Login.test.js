@@ -7,23 +7,6 @@ import { reducer } from "../../store";
 import React, { Component } from "react";
 import { Provider } from "react-redux";
 
-const initState = {
-  name: "",
-  truename: "",
-  password: "",
-  isnew: false,
-  status: "A fun status!",
-  email: "jg125@rice.edu",
-  phone: "1234",
-  zip: "77030",
-  justReg: false,
-  password: "11",
-  isAuthenticated: false,
-  posts: [],
-  searchedposts: [],
-  friends: [],
-};
-
 export function renderWithProviders(
   ui,
   {
