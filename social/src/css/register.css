@@ -1,31 +1,28 @@
-.whole{
-    width: 500px;
-    height: 500px;
-    position: relative;
-
+.whole {
+  width: 500px;
+  height: 500px;
+  position: relative;
 }
-.logbox{
-    position: absolute;
-    width: 400px;
-    height: 400px;
+.logbox {
+  position: absolute;
+  width: 400px;
+  height: 400px;
 
-    left: 50%;
-    top: 50%;
-    margin-left: -200px;
-    margin-top: -200px;
-
-
+  left: 50%;
+  top: 50%;
+  margin-left: -200px;
+  margin-top: -200px;
 }
 
-.form{
-    position: absolute;
-    margin-left:100px
+.form {
+  position: absolute;
+  margin-left: 100px;
 }
 
-.inputs{
-    margin-bottom: 25px;
+.inputs {
+  margin-bottom: 25px;
 }
 
-.btn btn-primary{
-    margin-top: 25px;
+.btn btn-primary {
+  margin-top: 25px;
 }

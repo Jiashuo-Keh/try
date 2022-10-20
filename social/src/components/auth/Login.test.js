@@ -1,20 +1,51 @@
-import {render as rtlRender, fireEvent, waitFor, screen, cleanup} from '@testing-library/react'
-import Login from './Login'
+import { render } from "@testing-library/react";
+import Login from "./Login";
+import { Router, Routes, Route } from "react-router-dom";
+import { createMemoryHistory } from "history";
 import { createStore } from "redux";
-import reducer from "../../store";
+import { reducer } from "../../store";
 import React, { Component } from "react";
-import { Provider } from "react-redux"
+import { Provider } from "react-redux";
 
+const initState = {
+  name: "",
+  truename: "",
+  password: "",
+  isnew: false,
+  status: "A fun status!",
+  email: "jg125@rice.edu",
+  phone: "1234",
+  zip: "77030",
+  justReg: false,
+  password: "11",
+  isAuthenticated: false,
+  posts: [],
+  searchedposts: [],
+  friends: [],
+};
 
-afterEach(cleanup)
+export function renderWithProviders(
+  ui,
+  {
+    preloadedState = {},
+    // Automatically create a store instance if no store was passed in
+    store = createStore(reducer, preloadedState),
+    ...renderOptions
+  } = {}
+) {
+  const h = createMemoryHistory();
+  function Wrapper({ children }) {
+    return (
+      <Router location={h.location} navigator={h}>
+        <Provider store={store}>{children}</Provider>
+      </Router>
+    );
+  }
 
-function renderWithRedux(component,{initialState,store=createStore(reducer,initialState)}){
-    return{
-        ...render(<Provider store ={store}>{component}</Provider>)
-    }
+  // Return an object with the store and all of RTL's query functionsF
+  return { store, ...render(ui, { wrapper: Wrapper, ...renderOptions }) };
 }
 
-
-it('should logg in successfully',()=>{
-    const{login}=renderWithRedux(<Login/>)
-})
+it("should log in successfully", () => {
+  const { login } = renderWithProviders(<Login />);
+});
